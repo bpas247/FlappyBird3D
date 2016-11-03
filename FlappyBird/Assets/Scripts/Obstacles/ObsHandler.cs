@@ -5,6 +5,7 @@ public class ObsHandler : MonoBehaviour {
 
 
     public double moveSpeed = 2;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -14,9 +15,9 @@ public class ObsHandler : MonoBehaviour {
 	void Update () {
 
 
-		if (transform.position.x > -5)
+		if (transform.position.x >= -5)
 			transform.Translate (new Vector3 (-1 * 2, 0, 0) * Time.deltaTime);
 		else
-			GameObject.Destroy (this);
+			GameObject.Destroy (gameObject);
 	}
 }
