@@ -24,7 +24,7 @@ public class SpawnObs : MonoBehaviour {
 
 		if (Time.fixedTime >= timeToGo) {
 
-			this.transform.position = new Vector3 (transform.position.x, Random.Range(1, 6), transform.position.z);
+			this.transform.position = new Vector3 (transform.position.x, (int) Random.Range(ground.transform.position.y + 1, roof.transform.position.y), transform.position.z);
 
 
 			for (float i = ground.transform.position.y; i <= roof.transform.position.y; i++) {
