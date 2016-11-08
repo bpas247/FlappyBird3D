@@ -9,11 +9,13 @@ public class PlayerHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		vertSpeed = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
 		Vector3 pos = transform.position;
 
 		if (Input.GetKeyDown ("space"))
