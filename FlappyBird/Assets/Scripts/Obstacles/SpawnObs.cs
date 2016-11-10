@@ -9,14 +9,17 @@ public class SpawnObs : MonoBehaviour {
 
 	public GameObject obs;
 
-	public GameObject ground;
+	private GameObject ground;
 
-	public GameObject roof;
+	private GameObject roof;
 
 	// Use this for initialization
 	void Start () {
 
 		timeToGo = Time.fixedTime + frequency;
+
+		ground = GameObject.FindGameObjectWithTag ("Floor");
+		roof = GameObject.FindGameObjectWithTag ("Roof");
 	}
 
 	// Update is called once per frame
