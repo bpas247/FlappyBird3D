@@ -13,6 +13,8 @@ public class SpawnObs : MonoBehaviour {
 
 	private GameObject roof;
 
+	private GameRegistery registery;
+
 	// Use this for initialization
 	void Start () {
 
@@ -20,23 +22,26 @@ public class SpawnObs : MonoBehaviour {
 
 		ground = GameObject.FindGameObjectWithTag ("Floor");
 		roof = GameObject.FindGameObjectWithTag ("Roof");
+		registery = (GameRegistery) GameObject.FindGameObjectWithTag ("Registery").GetComponent (typeof (GameRegistery));
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		if (Time.fixedTime >= timeToGo) {
+		if (registery.getIsGameRunning ()) {
+			if (Time.fixedTime >= timeToGo) {
 
-			this.transform.position = new Vector3 (transform.position.x, (int) Random.Range(ground.transform.position.y + 1, roof.transform.position.y), transform.position.z);
+				this.transform.position = new Vector3 (transform.position.x, (int) Random.Range (ground.transform.position.y + 1, roof.transform.position.y), transform.position.z);
 
 
-			for (float i = ground.transform.position.y; i <= roof.transform.position.y; i++) {
+				for (float i = ground.transform.position.y; i <= roof.transform.position.y; i++) {
 
-				if (i != this.transform.position.y) {
-					Instantiate (obs, new Vector3 (this.transform.position.x, i, this.transform.position.z), Quaternion.identity);
+					if (i != this.transform.position.y) {
+						Instantiate (obs, new Vector3 (this.transform.position.x, i, this.transform.position.z), Quaternion.identity);
+					}
 				}
+				timeToGo = Time.fixedTime + frequency;
 			}
-			timeToGo = Time.fixedTime + frequency;
 		}
 	}
 }

@@ -9,23 +9,26 @@ public class PlayerHandler : MonoBehaviour {
 	public double jumpSpeed = 0.01;
 
 	private GameObject roof;
-
+	private GameRegistery registery;
 	// Use this for initialization
 	void Start () {
 
 		vertSpeed = 0;
 		roof = GameObject.FindGameObjectWithTag ("Roof");
+		registery = (GameRegistery) GameObject.FindGameObjectWithTag ("Registery").GetComponent(typeof(GameRegistery));
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		jumpHandler();
+		if(registery.getIsGameRunning())
+			jumpHandler();
 	}
 
 	void OnCollisionEnter (Collision col) {
 		if (col.gameObject != roof)
-			GameObject.Destroy (this);
+			registery.setIsGameRunning (false);
 	}
 
 	void jumpHandler () {

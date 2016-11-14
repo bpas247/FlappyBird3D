@@ -7,6 +7,8 @@ TagManager:
   - Floor
   - Roof
   - Obs
+  - Spawner
+  - Registery
   layers:
   - Default
   - TransparentFX
