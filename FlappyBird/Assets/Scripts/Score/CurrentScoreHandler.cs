@@ -2,9 +2,10 @@
 using System.Collections;
 using UnityEngine.UI;
 
+[RequireComponent (typeof (Text))]
 public class CurrentScoreHandler : MonoBehaviour {
 
-	private int currentScore;
+	private float currentScore;
 	private Text txt;
 	private GameObject roof;
 	// Use this for initialization
@@ -15,12 +16,12 @@ public class CurrentScoreHandler : MonoBehaviour {
 	}
 	
 	public void addToScore() { currentScore++; }
-	public int getScore() { return currentScore; }
-	public void setScore(int i) { currentScore = i; }
+	public float getScore() { return currentScore; }
+	public void setScore(float i) { currentScore = i; }
 
 	// Update is called once per frame
 	void Update () {
 
-		txt.text = "Current Score: " + currentScore;
+		txt.text = "Current Score: " + Mathf.Round(currentScore);
 	}
 }

@@ -20,10 +20,10 @@ public class ObsHandler : MonoBehaviour {
 	void Update () {
 
 		if (registery.getIsGameRunning ()) {
-			if (transform.position.x > (player.transform.position.x - this.transform.lossyScale.x))
+			if (transform.position.x > (player.transform.position.x - transform.lossyScale.x))
 				transform.Translate (new Vector3 (-1 * moveSpeed, 0, 0) * Time.deltaTime);
 			else {
-				currentScore.addToScore ();
+				currentScore.setScore (currentScore.getScore() + 1f/6f);
 				GameObject.Destroy (gameObject);
 			}
 		}
